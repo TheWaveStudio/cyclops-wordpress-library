@@ -1,0 +1,13 @@
+{
+    "name": "ilasw/cyclops-wordpress-library",
+    "description": "Utility library",
+    "authors": [
+        {
+            "name": "Luca Pagliaro",
+            "email": "luca.pagliaro@thewavestudio.it"
+        }
+    ],
+    "require": {
+        "lstrojny/functional-php": "^1.17"
+    }
+}
