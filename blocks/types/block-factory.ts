@@ -5,6 +5,7 @@ export type BlockFieldConfig = {
   name: string;
   type: string;
   width?: number;
+  label?: string;
 };
 
 export type BlockFactoryConfig = {

@@ -18,10 +18,11 @@ add_action('cy_register_blocks', function () {
             Field::create('text', 'title')
                 ->setWidth(50),
             Field::create('richText', 'copy')
-                ->setWidth(100),
+                ->setWidth(50),
             Field::create('media', 'image')
-                ->setWidth(80)
-                ->setFilter('wf_get_image_url'),
+                ->setWidth(50)
+//                ->setFilter('wf_get_image_url')
+            ,
             Field::create('datePicker', 'eventDate'), // https://react-day-picker.js.org/
             Field::create('addable', 'details')
                 ->addFields([

@@ -1,22 +1,31 @@
-import {BlockFactoryConfig} from "./types/block-factory";
-import {registerBlockType} from "@wordpress/blocks";
-import {__} from "@wordpress/i18n";
 import React from "react";
-
-console.log({CY: window.CY})
+// import {__} from "@wordpress/i18n";
+import {registerBlockType} from "@wordpress/blocks";
+import {BlockFactoryConfig} from "@/types/block-factory";
+import {BlockWrapper} from "./components/block-wrapper";
 
 const blockFactory = (config: BlockFactoryConfig) => {
-  console.log({config})
+
+  const {name, fields} = config;
+  const attributes = fields.reduce((acc, {type, name}) => {
+    return {...acc, [name]: {type, }}
+  }, {})
+
   return registerBlockType(config.blockName, {
     title: config.name,
-    description: __('An example block', 'cy'),
+    // description: __('An example block', 'cy'),
     category: 'layout',
     icon: 'smiley',
     supports: {html: true},
-    attributes: {className: {type: 'string'}},
-    edit: ({className}: { className: string }) => {
-      return <div className={className}>{__('Hello from the editor!', 'cy')}</div>
-    },
+    attributes,
+    edit: (props) => (
+        <>
+          <BlockWrapper blockName={name}
+                        config={config}
+                        {...props}
+          />
+        </>
+    ),
     save: (props) => {
       console.log('save', {props})
       return <div>Hello!</div>;
@@ -26,7 +35,7 @@ const blockFactory = (config: BlockFactoryConfig) => {
 
 window?.CY?.blocks?.forEach?.(config => {
   const block = blockFactory(config);
-  // console.log({block});
+  console.log({block});
 })
 
 

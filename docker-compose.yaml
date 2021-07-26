@@ -30,4 +30,4 @@ services:
       VIRTUAL_PORT: 80
     volumes:
       - ./:/var/www/html/wp-content/plugins/cyclops-demo
-      - ./demo/conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./sample/conf/php.ini:/usr/local/etc/php/conf.d/uploads.ini
