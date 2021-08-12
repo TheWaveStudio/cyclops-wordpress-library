@@ -1,44 +1,36 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
-    "module": "ESNext",
-    "target": "es5",
+    "jsx": "react",
+    "target": "es6",
     "lib": [
-      "es6",
+      "esnext",
       "dom"
     ],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./blocks",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "outDir": "./build/",
     "paths": {
       "@/types/*": [
-        "./types/*"
+        "./blocks/types/*"
       ],
       "@/components/*": [
-        "./components/*"
+        "./blocks/components/*"
       ],
       "@/fields/*": [
-        "./components/fields/*"
+        "./blocks/components/fields/*"
       ]
     }
   },
   "include": [
-    "blocks"
+    "."
   ],
   "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "node_modules"
   ]
 }

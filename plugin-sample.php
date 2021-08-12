@@ -24,9 +24,10 @@ add_action('cy_register_blocks', function () {
 //                ->setFilter('wf_get_image_url')
             ,
             Field::create('datePicker', 'eventDate'), // https://react-day-picker.js.org/
-            Field::create('addable', 'details')
+            Field::create('addable', 'details', 'Titolone')
                 ->addFields([
-                    Field::create('text', 'title')
+                    Field::create('text', 'title'),
+                    Field::create('rich_text', 'content'),
                 ])
         ])
         ->setCallback(function ($fields) {

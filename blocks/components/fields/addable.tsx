@@ -1,9 +1,49 @@
-// import React, {useState, useEffect, FC} from 'react';
-// import {WFField} from "./WFField";
-// import {AddableFieldProps} from "@/types/edit-fields";
-//
-// export const AddableField: FC<AddableFieldProps> = (props) => {
-//
+import React, {FC, useMemo} from 'react';
+import {AddableFieldProps, AddableFieldItemProps} from "@/types/edit-fields";
+import {BlockField} from "../block-field";
+
+const AddableFieldItem: FC<AddableFieldItemProps> = props => {
+  const {config, onChange, index, value} = props;
+  return <BlockField config={config}
+                     onChange={value => onChange(value, index)}
+                     value={value}/>
+}
+
+export const AddableField: FC<AddableFieldProps> = (props) => {
+  const {
+    config: {children: fields = [], ...componentProps} = {},
+    onChange = () => null,
+    value = []
+  } = props;
+
+  const count = useMemo(() => value?.length, [value]);
+
+  const updateChild = (name: string, changes: any, index: number) => {
+    const newValues = [...value];
+    newValues[index] = {...newValues[index], [name]: changes};
+    return onChange(newValues);
+  }
+  const addItem = () => onChange([...value, ""])
+  const removeItem = (index: number) => onChange(value.filter((_, i: number) => i !== index))
+
+  console.log({componentProps})
+
+  return <div>
+    <div>Count: {count}</div>
+    {Array.from({length: count}, (_) => fields)
+        .map((fields, index) => <>
+          {fields.map((config) => <AddableFieldItem config={config}
+                                                    onChange={value => updateChild(config.name, value, index)}
+                                                    value={value[index]?.[config.name]}
+                                                    index={index}
+          />)}
+          <button onClick={e => removeItem(index)}>Remove #{index}</button>
+        </>)}
+    <button onClick={e => addItem()}>Aggiungi nuovo</button>
+  </div>
+}
+
+export default AddableField;
 //   const {
 //     children = [],
 //     onChange = () => null,

@@ -9,3 +9,5 @@ export const FieldWrapper: FC<FieldWrapperProps> = (props) => {
     {!!children && children}
   </div>
 }
+
+export default FieldWrapper;

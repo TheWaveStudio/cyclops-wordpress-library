@@ -1,5 +1,5 @@
 export type BlockFieldConfig = {
-  children?: any[];
+  children?: BlockFieldConfig[];
   field: string;
   filterFunction?: string;
   name: string;
