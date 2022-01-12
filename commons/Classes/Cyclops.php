@@ -89,6 +89,7 @@ class Cyclops
         }
 
         register_block_type('cyclops/' . $this->slugify($block['name']), [
+            'api_version' => 2,
             'render_callback' => function ($fields) use ($block, $attributes) {
 
                 foreach ($fields as $key => $field) {

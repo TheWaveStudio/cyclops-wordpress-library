@@ -8,10 +8,11 @@ const blockFactory = (config: BlockFactoryConfig) => {
 
   const {name, fields} = config;
   const attributes = fields.reduce((acc, {type, name}) => {
-    return {...acc, [name]: {type, }}
+    return {...acc, [name]: {type,}}
   }, {})
 
   return registerBlockType(config.blockName, {
+    apiVersion: 2,
     title: config.name,
     // description: __('An example block', 'cy'),
     category: 'layout',
@@ -25,11 +26,7 @@ const blockFactory = (config: BlockFactoryConfig) => {
                         {...props}
           />
         </>
-    ),
-    save: (props) => {
-      console.log('save', {props})
-      return <div>Hello!</div>;
-    }
+    )
   })
 }
 
