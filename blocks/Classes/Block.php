@@ -1,10 +1,9 @@
 <?php
 
 
-namespace TW\Cyclops\Blocks;
+namespace Cyclops\Blocks;
 
-
-use TW\Cyclops\Cyclops;
+use Cyclops\Cyclops;
 
 class Block
 {

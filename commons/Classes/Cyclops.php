@@ -1,8 +1,7 @@
 <?php
 
 
-namespace TW\Cyclops;
-
+namespace Cyclops;
 
 class Cyclops
 {

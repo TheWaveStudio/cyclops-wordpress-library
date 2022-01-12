@@ -9,5 +9,11 @@
   ],
   "require": {
     "lstrojny/functional-php": "^1.17"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cyclops\\": "commons/Classes/",
+      "Cyclops\\Blocks": "blocks/Classes/"
+    }
   }
 }
