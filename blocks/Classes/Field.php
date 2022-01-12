@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TW\Cyclops\Blocks;
+namespace Cyclops\Blocks;
 
 
 class Field

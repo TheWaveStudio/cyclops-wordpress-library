@@ -6,8 +6,8 @@
 
 require_once __DIR__ . "/index.php";
 
-use TW\Cyclops\Blocks\Block;
-use TW\Cyclops\Blocks\Field;
+use Cyclops\Blocks\Block;
+use Cyclops\Blocks\Field;
 
 add_action('cy_register_blocks', function () {
     $block = (new Block('test'));

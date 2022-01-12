@@ -10,6 +10,20 @@ class Cyclops
 
     public function __construct()
     {
+        add_action('init', function () {
+
+            global $cyBlocks;
+
+            $cyBlocks = [];
+
+            do_action('cy_before_register_blocks');
+
+            do_action('cy_register_blocks', $cyBlocks);
+
+            do_action('cy_after_register_blocks', $cyBlocks);
+
+        }, 15);
+
         add_action('cy_after_register_blocks', [$this, 'registerBlocks'], 10);
     }
 
