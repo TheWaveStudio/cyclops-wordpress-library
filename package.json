@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack --watch --config webpack.config.js",
-    "build": "webpack --production --config webpack.config.js"
+    "build": "webpack --mode=production --config webpack.config.js"
   },
   "dependencies": {
     "@wordpress/block-editor": "^8.0.13",

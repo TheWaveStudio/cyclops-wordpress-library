@@ -24,7 +24,7 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
     return onChange(newValues);
   }
   const addItem = () => onChange([...value, ""])
-  const removeItem = (index: number) => onChange(value.filter((_, i: number) => i !== index))
+  const removeItem = (index: number) => onChange(value.filter((_: any, i: number) => i !== index))
 
   console.log({componentProps})
 
