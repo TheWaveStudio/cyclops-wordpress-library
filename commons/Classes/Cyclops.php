@@ -103,7 +103,12 @@ class Cyclops
                 }
 
                 ob_start();
-                call_user_func($block['callback'], $fields);
+
+                if ($block['callback']) {
+                    call_user_func($block['callback'], $fields);
+                } else {
+                    echo '';
+                }
                 return ob_get_clean();
             },
             'attributes' => $attributes
