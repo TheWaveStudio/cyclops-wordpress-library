@@ -6,10 +6,11 @@ namespace Cyclops;
 class Cyclops
 {
     private static $instance = null;
-    public $version = "0.0.1";
+    public $version = "0.0.16";
 
     public function __construct()
     {
+        add_action('cy_after_register_blocks', [$this, 'registerBlocks'], 10);
         add_action('init', function () {
 
             global $cyBlocks;
@@ -22,9 +23,7 @@ class Cyclops
 
             do_action('cy_after_register_blocks', $cyBlocks);
 
-        }, 15);
-
-        add_action('cy_after_register_blocks', [$this, 'registerBlocks'], 10);
+        }, 11);
     }
 
     public static function getInstance()
