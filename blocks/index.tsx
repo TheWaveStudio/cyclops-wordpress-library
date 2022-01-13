@@ -1,6 +1,8 @@
 import React from "react";
-// import {__} from "@wordpress/i18n";
 import {registerBlockType} from "@wordpress/blocks";
+// @ts-ignore
+import {useBlockProps} from "@wordpress/block-editor";
+
 import {BlockFactoryConfig} from "@/types/block-factory";
 import {BlockWrapper} from "./components/block-wrapper";
 
@@ -19,14 +21,21 @@ const blockFactory = (config: BlockFactoryConfig) => {
     icon: 'smiley',
     supports: {html: true},
     attributes,
-    edit: (props) => (
-        <>
-          <BlockWrapper blockName={name}
-                        config={config}
-                        {...props}
-          />
-        </>
-    )
+    edit: (props) => {
+
+      const blockProps = useBlockProps({
+        className: config.blockName
+      })
+
+      return (
+          <div {...blockProps}>
+            <BlockWrapper blockName={name}
+                          config={config}
+                          {...props}
+            />
+          </div>
+      )
+    }
   })
 }
 

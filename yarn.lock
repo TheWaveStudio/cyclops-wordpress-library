@@ -2366,7 +2366,7 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
-"@types/wordpress__block-editor@^6.0.3":
+"@types/wordpress__block-editor@^6.0.4":
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/@types/wordpress__block-editor/-/wordpress__block-editor-6.0.4.tgz#aeccbddef2a102c968f25833c3fdc56c065c386c"
   integrity sha512-8l9E+R/y4yrAopjuJieHvzBD/SRtKE5IwC4unC/4WWYQCbt2WeXNK+bYRBrtHtKi1PKnVAcqPXkpOGWyxfUOzA==
