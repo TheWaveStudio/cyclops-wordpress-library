@@ -15,7 +15,7 @@ add_action('cy_register_blocks', function () {
     $block
         ->showTitle()
         ->addFields([
-            Field::create('text', 'title', 'ciao')
+            Field::create('text', 'title', 'Title')
                 ->setWidth(50),
             Field::create('richText', 'copy')
                 ->setWidth(50),
