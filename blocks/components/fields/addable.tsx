@@ -24,7 +24,7 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
     return onChange(newValues);
   }
   const addItem = () => onChange([...value, ""])
-  const removeItem = (index: number) => onChange(value.filter((_, i: number) => i !== index))
+  const removeItem = (index: number) => onChange(value.filter((_: any, i: number) => i !== index))
 
   console.log({componentProps})
 
@@ -34,7 +34,7 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
         .map((fields, index) => <>
           {fields.map((config) => <AddableFieldItem config={config}
                                                     onChange={value => updateChild(config.name, value, index)}
-                                                    value={value[index]?.[config.name]}
+                                                    value={value[index]?.[config.name] ?? ''}
                                                     index={index}
           />)}
           <button onClick={e => removeItem(index)}>Remove #{index}</button>
