@@ -34,7 +34,7 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
         .map((fields, index) => <>
           {fields.map((config) => <AddableFieldItem config={config}
                                                     onChange={value => updateChild(config.name, value, index)}
-                                                    value={value[index]?.[config.name]}
+                                                    value={value[index]?.[config.name] ?? ''}
                                                     index={index}
           />)}
           <button onClick={e => removeItem(index)}>Remove #{index}</button>

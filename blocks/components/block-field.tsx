@@ -1,12 +1,13 @@
 import React, {FC, useMemo} from "react";
 import {BlockFieldConfig} from "@/types/block-factory";
-import {TextField, MediaField, RichTextField, DatePickerField, AddableField} from "./fields";
+import {CtaField, TextField, MediaField, RichTextField, DatePickerField, AddableField} from "./fields";
 
 const FieldsDictionary: { [key: string]: any } = {
   'text': TextField,
   'media': MediaField,
   'richText': RichTextField,
-  'datePicker': DatePickerField
+  'datePicker': DatePickerField,
+  'cta': CtaField,
 }
 
 export const BlockField: FC<{

@@ -8,20 +8,22 @@ class Field
 {
     protected $type;
     protected $name;
+    protected $label;
     protected $width = 100;
     protected $filterFunction = null;
     protected $childrenFields = [];
 
-    public function __construct($type, $name)
+    public function __construct($type, $name, $label = null)
     {
         $this->type = $type;
         $this->name = $name;
+        $this->label = $label;
         return $this;
     }
 
-    public static function create($type, $name)
+    public static function create($type, $name, $label = null)
     {
-        return new Field($type, $name);
+        return new Field($type, $name, $label);
     }
 
     public function setWidth(int $width = 100)
@@ -52,6 +54,7 @@ class Field
 
         return [
             "name" => $this->name,
+            "label" => $this->label,
             "field" => $this->type,
             "type" => $type,
             "width" => $this->width,
