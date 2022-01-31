@@ -1,0 +1,74 @@
+html{
+  font-size: 20px;
+}
+.BlockWrapper{
+  position: relative;
+  .title{
+    font-size: 1.2rem;
+  }
+  .background-wrapper{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .background-color{
+      border: 1px solid rgba(0,0,0,0.5);
+      border-radius: 0.15rem;
+      display: block;
+      height: 2rem;
+      margin-left: 0.5rem;
+      width: 2rem;
+    }
+  }
+}
+
+.field-wrapper{
+  padding:0.2rem;
+  label{
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  input,
+  select,
+  textarea{
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 0.15rem;
+    box-sizing: border-box;
+    font-size: 0.7rem;
+    line-height: 1.6rem;
+    padding: 0 0.3rem;
+  }
+
+  .components-select-control__input{
+    font-size: 0.7rem!important;
+    height: auto!important;
+    line-height: 1.6rem!important;
+    padding: 0 0.3rem!important;
+  }
+
+  .components-input-control__backdrop{
+    border-radius: 0.15rem!important;
+    line-height: 1.6rem!important;
+  }
+
+  .components-placeholder__label{
+    font-size: 0.8rem;;
+  }
+
+  .cyclops-button{
+    background-color: #000;
+    border-color: #000;
+    border-radius: 0.15rem;
+    color: #fff;
+    line-height: 2rem;
+    margin-top: 0.5rem;
+    padding: 0 1rem;
+    & + .cyclops-button{
+      margin-left: 0.5rem;
+    }
+  }
+}

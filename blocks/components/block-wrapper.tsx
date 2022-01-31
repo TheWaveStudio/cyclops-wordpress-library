@@ -1,12 +1,13 @@
-import React, {FC, useEffect} from "react";
-import {BlockFactoryConfig, BlockFieldConfig} from "@/types/block-factory";
+import React, {FC} from "react";
+import {BlockFactoryConfig} from "@/types/block-factory";
 import {BlockField} from "./block-field";
 
 export type BlockWrapperProps = {
   blockName: string,
   config: BlockFactoryConfig,
   setAttributes: Function,
-  attributes: any
+  attributes: any,
+  backgroundColor: string,
 };
 
 export const BlockWrapper: FC<BlockWrapperProps> = props => {
@@ -15,16 +16,20 @@ export const BlockWrapper: FC<BlockWrapperProps> = props => {
     children,
     config: {fields = []},
     setAttributes,
+    backgroundColor,
     attributes
   } = props;
 
   // useEffect(() => {
   //   console.log({attributes})
   // }, [attributes]);
-
   return (
       <div className="BlockWrapper">
         {!!blockName?.length && (<h3 className="title">{blockName}</h3>)}
+        {backgroundColor!== 'transparent' &&  <div className="background-wrapper">
+            Colore di sfondo: <span className="background-color" style={{backgroundColor: backgroundColor}}></span>
+          </div>
+        }
         {!!children && <div className="BlockWrapper__children">{children}</div>}
         <div className="BlockWrapper__content"
              style={{display: "flex", flexFlow: "row wrap"}}
