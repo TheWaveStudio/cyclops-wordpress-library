@@ -12,14 +12,16 @@ composer require thewave/cyclops-wordpress
 
 ### Classes ###
 
-#### Cyclops\Cyclops #### 
+#### Cyclops #### 
 Core class
 
-#### Cyclops\Blocks\Block #### 
+#### Block #### 
 Block generator class
 
-#### Cyclops\Blocks\Field #### 
+#### Field #### 
 Field generator class
+
+-----
 
 ### Fields ###
 
