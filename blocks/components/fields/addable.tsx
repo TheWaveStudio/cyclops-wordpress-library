@@ -31,15 +31,15 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
   return <div>
     <div>Count: {count}</div>
     {Array.from({length: count}, (_) => fields)
-        .map((fields, index) => <>
+        .map((fields, index) => <div className={"cyclops-addable-item"}>
           {fields.map((config) => <AddableFieldItem config={config}
                                                     onChange={value => updateChild(config.name, value, index)}
                                                     value={value[index]?.[config.name] ?? ''}
                                                     index={index}
           />)}
-          <button onClick={e => removeItem(index)}>Remove #{index}</button>
-        </>)}
-    <button onClick={e => addItem()}>Aggiungi nuovo</button>
+          <button className="cyclops-button" onClick={e => removeItem(index)}>Remove #{index}</button>
+        </div>)}
+    <button  className="cyclops-button" onClick={e => addItem()}>Aggiungi nuovo</button>
   </div>
 }
 

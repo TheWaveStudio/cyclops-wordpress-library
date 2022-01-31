@@ -6,10 +6,14 @@ export type BlockFieldConfig = {
   type: string;
   width?: number;
   label?: string;
+  attributes: any;
 };
 
 export type BlockFactoryConfig = {
   name: string,
   blockName: string,
-  fields: BlockFieldConfig[]
+  fields: BlockFieldConfig[],
+  parent: string[],
+  innerBlocks: string[]
+  blocksControl: BlockFieldConfig[]
 };

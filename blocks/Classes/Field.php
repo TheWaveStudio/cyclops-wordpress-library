@@ -8,6 +8,7 @@ class Field
 {
     protected $type;
     protected $name;
+    protected $attributes = null;
     protected $label;
     protected $width = 100;
     protected $filterFunction = null;
@@ -18,6 +19,10 @@ class Field
         $this->type = $type;
         $this->name = $name;
         $this->label = $label;
+
+        if($type === 'lastTypes'){
+          $this->setPostsTypes();
+        }
         return $this;
     }
 
@@ -26,9 +31,21 @@ class Field
         return new Field($type, $name, $label);
     }
 
+    private function setPostsTypes() {
+      $postTypes = get_post_types();
+      $this->setAttribute('postTypes',$postTypes);
+
+      return $this;
+    }
+
     public function setWidth(int $width = 100)
     {
         $this->width = $width;
+        return $this;
+    }
+
+    public function setPostType(string $type){
+      $this->setAttribute('postType', $type);
         return $this;
     }
 
@@ -48,6 +65,12 @@ class Field
         return $this;
     }
 
+    public function setAttribute($key, $value)
+    {
+      $this->attributes[$key] = $value;
+      return $this;
+    }
+
     public function getField()
     {
         $type = $this->getFieldType($this->type);
@@ -60,7 +83,18 @@ class Field
             "width" => $this->width,
             "filterFunction" => $this->filterFunction,
             "children" => $this->childrenFields,
+            "attributes" => $this->attributes
         ];
+    }
+
+    public function setOptions(array $options){
+      $formattedOptions = [];
+      foreach ($options as $key => $value) {
+        array_push($formattedOptions, ['label' => $value, 'value' => $key]);
+      }
+      $this->setAttribute('options',$formattedOptions);
+
+      return $this;
     }
 
     private function getFieldType($type)
