@@ -1,6 +1,6 @@
 {
   "name": "cyclops-wordpress-library",
-  "version": "0.0.2",
+  "version": "v0.0.19",
   "description": "WordPress utility",
   "main": "index.js",
   "license": "MIT",
