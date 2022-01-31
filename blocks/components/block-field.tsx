@@ -1,6 +1,17 @@
 import React, {FC, useMemo} from "react";
 import {BlockFieldConfig} from "@/types/block-factory";
-import {CtaField, TextField, MediaField, RichTextField, DatePickerField, AddableField} from "./fields";
+import {
+  CtaField,
+  ColorsPaletteField,
+  TextField,
+  MediaField,
+  RichTextField,
+  DatePickerField,
+  AddableField,
+  SelectField,
+  TypesSelectionField,
+  LastTypesField
+} from "./fields";
 
 const FieldsDictionary: { [key: string]: any } = {
   'text': TextField,
@@ -8,6 +19,10 @@ const FieldsDictionary: { [key: string]: any } = {
   'richText': RichTextField,
   'datePicker': DatePickerField,
   'cta': CtaField,
+  'colors': ColorsPaletteField,
+  'select': SelectField,
+  'itemsSelection': TypesSelectionField,
+  'lastTypes': LastTypesField
 }
 
 export const BlockField: FC<{
@@ -15,12 +30,13 @@ export const BlockField: FC<{
   onChange: (...args: any[]) => void,
   value: any
 }> = props => {
+  
 
   const {config, value, onChange} = props;
   const DynamicField = useMemo(() => {
     return FieldsDictionary[config.field ?? 'text'] ?? FieldsDictionary.text;
   }, [config?.type])
-
+  
   return <div className="field-wrapper"
               style={{flex: "0 1 " + (config.width ?? 100) + '%'}}
   >
@@ -29,13 +45,15 @@ export const BlockField: FC<{
                         onChange={onChange}
                         value={value}
                         placeholder={""}
+                        customAttributes={config.attributes ?? {}}
         />
         : <div>
           <AddableField config={config}
                         onChange={onChange}
                         value={value}
+                        customAttributes={config.attributes ?? {}}
           />
-          {JSON.stringify(value)}
+          {/*{JSON.stringify(value)}*/}
         </div>
     }
   </div>

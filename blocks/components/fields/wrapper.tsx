@@ -5,7 +5,7 @@ type FieldWrapperProps = { label: string }
 export const FieldWrapper: FC<FieldWrapperProps> = (props) => {
   const {label, children} = props;
   return <div>
-    {!!label?.length && <label>{label}</label>}
+    {!!label?.length && <label className="field-label">{label}</label>}
     {!!children && children}
   </div>
 }

@@ -10,7 +10,6 @@ export const CtaField: FC<GenericEditFieldProps> = props => {
         ? `<a href="${buttonObject?.href}">${buttonObject?.text}</a>`
         : buttonObject?.text;
     return <FieldWrapper label={label}>
-        <br/>
         <RichText value={html}
                   aria-label={'Button text'}
                   placeholder={ placeholder ||  'Add text…' }

@@ -3,15 +3,18 @@
 
 namespace TW\Cyclops\Blocks;
 
-
 use TW\Cyclops\Cyclops;
 
 class Block
 {
+    private $blocksRoot = 'cyclops';
     private $name;
+    private $id;
     private $icon;
     private $title;
     private $showTitle;
+    private $innerBlocks;
+    private $blockControls;
     private $description;
 
     private $category;
@@ -25,8 +28,9 @@ class Block
     private $fields;
     private $callback = null;
 
-    public function __construct($name)
+    public function __construct(string $name, string $id = null)
     {
+        $this->id = $id;
         $this->name = $name;
         return $this;
     }
@@ -44,13 +48,32 @@ class Block
         return $this;
     }
 
+    public function setParent(array $values)
+    {
+      $this->parent = \Functional\map($values, fn ($value) => "{$this->blocksRoot}/{$value}");
+      return $this;
+    }
+
+    public function setInnerBlocks(array $values)
+    {
+      $this->innerBlocks = $values;
+      return $this;
+    }
+
     public function addFields(array $fields)
     {
-
         if (!is_array($fields)) return $this;
 
         $this->fields = $fields;
         return $this;
+    }
+
+    public function addBlockControls(array $fields)
+    {
+      if (!is_array($fields)) return $this;
+
+      $this->blockControls = $fields;
+      return $this;
     }
 
     public function setCallback(callable $callback)
@@ -72,14 +95,21 @@ class Block
 
         $fields = array_map(function ($field) {
             return $field->getField();
-        }, $this->fields);
+        }, $this->fields ?? []);
 
-        $slug = Cyclops::slugify($this->name);
+        $blocksControl = array_map(function ($field) {
+          return $field->getField();
+        }, $this->blockControls ?? []);
+
+        $slug = $this->id ?? Cyclops::slugify($this->name);
         $cyBlocks[] = [
             "name" => $this->name,
-            "blockName" => "cyclops/{$slug}",
+            "blockName" => "{$this->blocksRoot}/{$slug}",
             "fields" => $fields,
+            "blocksControl" => $blocksControl,
             "callback" => $this->callback,
+            "parent" => $this->parent,
+            "innerBlocks" => $this->innerBlocks
         ];
 
         return $this;

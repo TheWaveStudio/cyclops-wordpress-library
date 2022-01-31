@@ -1,9 +1,9 @@
 import {BlockFieldConfig} from "@/types/block-factory";
-
 export type GenericEditFieldProps = {
   onChange: (value: string) => void,
   placeholder?: string,
   value: any,
+  customAttributes: any,
   label?: string
 };
 
