@@ -48,34 +48,34 @@ const blockFactory = (config: BlockFactoryConfig) => {
       return (
           <div {...blockProps}>
             <BlockWrapper
-              blockName={name}
-              config={config}
-              backgroundColor={color}
-              {...props}
+                blockName={name}
+                config={config}
+                backgroundColor={color}
+                {...props}
             />
             <InspectorControls>
               { config.blocksControl.map(field => (
                   <PanelWrapper  field={field}
                                  onChangeColor={changedBackgroundColor}
                                  {...props} />
-                ))
+              ))
               }
             </InspectorControls>
             {config.innerBlocks?.length &&
-              <div className="inner-blocks">
-                Add fields <InnerBlocks allowedBlocks={config.innerBlocks} />
-              </div>
+            <div className="inner-blocks">
+              Add fields <InnerBlocks allowedBlocks={config.innerBlocks} />
+            </div>
             }
           </div>
       )
     },
     save: (props) => {
-     return (
-       <>
-         {props}
-         {config.innerBlocks?.length &&  <InnerBlocks.Content />}
-       </>
-     )
+      return (
+          <>
+            {props}
+            {config.innerBlocks?.length &&  <InnerBlocks.Content />}
+          </>
+      )
     }
   })
 }

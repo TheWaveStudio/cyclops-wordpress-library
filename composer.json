@@ -1,13 +1,23 @@
 {
   "name": "thewave/cyclops-wordpress",
-  "description": "Fields and Blocks WordPress library",
+  "description": "Gutenberg Blocks WordPress library",
   "authors": [
     {
       "name": "Luca Pagliaro",
       "email": "luca.pagliaro@thewavestudio.it"
+    },
+    {
+      "name": "Francesca Patanè",
+      "email": "francesca.patane@thewavestudio.it"
     }
   ],
   "require": {
     "lstrojny/functional-php": "^1.17"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cyclops\\": "commons/Classes/",
+      "Cyclops\\Blocks\\": "blocks/Classes/"
+    }
   }
 }

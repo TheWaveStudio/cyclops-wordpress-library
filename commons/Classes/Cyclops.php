@@ -1,18 +1,42 @@
 <?php
 
 
-namespace TW\Cyclops;
-
+namespace Cyclops;
 
 class Cyclops
 {
     private static $instance = null;
-    public $version = "0.0.1";
+    public $version = "0.0.16";
 
     public function __construct()
     {
         add_action('cy_after_register_blocks', [$this, 'registerBlocks'], 10);
+        add_action('init', function () {
+
+            global $cyBlocks;
+
+            $cyBlocks = [];
+
+            do_action('cy_before_register_blocks');
+
+            do_action('cy_register_blocks', $cyBlocks);
+
+            do_action('cy_after_register_blocks', $cyBlocks);
+
+        }, 11);
+
+
+        add_action('enqueue_block_assets', [$this, 'cyclops_gutenberg_stylesheet']);
+
     }
+
+    function cyclops_gutenberg_stylesheet()
+    {
+        if (is_admin()) {
+            wp_enqueue_style('cyclops-style', plugins_url('../../build/main.css', __FILE__));
+        }
+    }
+
 
     public static function getInstance()
     {
@@ -75,7 +99,8 @@ class Cyclops
             $blockFields[] = $blockField;
         }
 
-        register_block_type('cyclops/' . $this->slugify($block['name']), [
+        register_block_type($block['blockName'], [
+            'api_version' => 2,
             'render_callback' => function ($fields) use ($block, $attributes) {
 
                 foreach ($fields as $key => $field) {
