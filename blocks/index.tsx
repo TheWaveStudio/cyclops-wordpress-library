@@ -8,7 +8,6 @@ import {PanelWrapper} from "./components/panel-wrapper";
 import './styles/_main.scss';
 
 const blockFactory = (config: BlockFactoryConfig) => {
-console.log(config.innerBlocks)
   const {name, fields, blocksControl} = config;
   const fieldsAttributes = fields.reduce((acc, {type, name}) => {
     return {...acc, [name]: {type,}}
@@ -17,7 +16,7 @@ console.log(config.innerBlocks)
     return {...acc, [name]: {type,}}
   }, {})
   const attributes ={...fieldsAttributes, ...controlsAttributes}
-  
+
   return registerBlockType(config.blockName, {
     apiVersion: 2,
     title: config.name,
@@ -32,7 +31,7 @@ console.log(config.innerBlocks)
       const blockProps = useBlockProps({
         className: config.blockName
       })
-      
+
       useEffect(()=>{
         for (const [key, value] of Object.entries(props.attributes)) {
           if(key === 'backgroundColor'){
@@ -45,7 +44,7 @@ console.log(config.innerBlocks)
       const changedBackgroundColor = (color: string) =>{
         setColor(color);
       }
-      
+
       return (
           <div {...blockProps}>
             <BlockWrapper
@@ -73,7 +72,7 @@ console.log(config.innerBlocks)
     save: (props) => {
      return (
        <>
-         {props} 
+         {props}
          {config.innerBlocks?.length &&  <InnerBlocks.Content />}
        </>
      )
