@@ -8,7 +8,6 @@ import {PanelWrapper} from "./components/panel-wrapper";
 import './styles/_main.scss';
 
 const blockFactory = (config: BlockFactoryConfig) => {
-console.log(config.innerBlocks)
   const {name, fields, blocksControl} = config;
   const fieldsAttributes = fields.reduce((acc, {type, name}) => {
     return {...acc, [name]: {type,}}
