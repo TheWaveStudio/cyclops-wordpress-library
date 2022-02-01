@@ -24,7 +24,19 @@ class Cyclops
             do_action('cy_after_register_blocks', $cyBlocks);
 
         }, 11);
+
+
+        add_action('enqueue_block_assets', [$this, 'cyclops_gutenberg_stylesheet']);
+
     }
+
+    function cyclops_gutenberg_stylesheet()
+    {
+        if (is_admin()) {
+            wp_enqueue_style('cyclops-style', plugins_url('../../build/main.css', __FILE__));
+        }
+    }
+
 
     public static function getInstance()
     {
@@ -87,7 +99,7 @@ class Cyclops
             $blockFields[] = $blockField;
         }
 
-        register_block_type('cyclops/' . $this->slugify($block['name']), [
+        register_block_type($block['blockName'], [
             'api_version' => 2,
             'render_callback' => function ($fields) use ($block, $attributes) {
 
