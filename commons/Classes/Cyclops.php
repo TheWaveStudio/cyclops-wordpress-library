@@ -6,7 +6,7 @@ namespace Cyclops;
 class Cyclops
 {
     private static $instance = null;
-    public $version = "0.0.16";
+    public $version = "v0.0.21";
 
     public function __construct()
     {
