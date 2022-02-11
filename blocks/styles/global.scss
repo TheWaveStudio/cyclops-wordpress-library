@@ -42,14 +42,19 @@ html{
     line-height: 1.6rem;
     padding: 0 0.3rem;
   }
-
+  .components-select-control{
+    justify-content: flex-start!important;
+  }
+  .components-input-control__container{
+    display: block!important;
+    flex: none!important;
+  }
   .components-select-control__input{
     font-size: 0.7rem!important;
     height: auto!important;
     line-height: 1.6rem!important;
     padding: 0 0.3rem!important;
   }
-
   .components-input-control__backdrop{
     border-radius: 0.15rem!important;
     line-height: 1.6rem!important;
