@@ -8,8 +8,7 @@ type PostType = {
     rendered: string;
   };
   id: string;
-  first_name?: string;
-  last_name?: string;
+  name?: string;
 }
 
 export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
@@ -19,15 +18,15 @@ export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
   const [firstLoaded,setFirstLoaded] = useState( false);
 
   const posts: PostType[] = useSelect((select) => {
-      const type =  customAttributes?.postType ?? 'posts';
-      const source = type === 'user' ? 'root' : 'postType';
-      const query :any = {
-        search: searchKey,
-        ...(!!customAttributes?.role && { role: customAttributes?.role})
-      };
-      return select('core').getEntityRecords(source, type, query);
-    }, [searchKey])
-  
+    const type =  customAttributes?.postType ?? 'posts';
+    const source = type === 'user' ? 'root' : 'postType';
+    const query :any = {
+      search: searchKey,
+      ...(!!customAttributes?.role && { role: customAttributes?.role})
+    };
+    return select('core').getEntityRecords(source, type, query);
+  }, [searchKey])
+
   const values = value?.length ? JSON.parse(value) : [];
 
   useEffect(() =>{
@@ -36,7 +35,7 @@ export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
     values.forEach((id: string) => selectedValues = [...selectedValues, posts.filter(post => +post.id === +id)?.[0]])
     setSelection(selectedValues)
     setFirstLoaded(true);
-    
+
   }, [posts])
   const handleSelection = (selectedItem: PostType) =>{
     if(selection.some(item => item.id === selectedItem.id)){
@@ -45,50 +44,50 @@ export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
     }
     setSelection([...selection, selectedItem]);
   }
-  
+
   useEffect(() =>{
     if(!firstLoaded) return;
-    
+
     onChange(JSON.stringify(selection.map(post => post.id)));
   },[selection])
-  
+
   return(
-    <FieldWrapper label={label}>
-      <div className="TypesSelection">
-        <div className="type-selection-wrapper">
-          <div className="type-selection-search-wrapper">
-            <input
-              type="text"
-              autoComplete="off"
-              className="type-selection-search-input"
-              name="search"
-              placeholder="Search..."
-              onChange={(e) => setSearchKey(e.currentTarget.value)}
-            />
-            {posts?.length > 0 && <ul className="type-selection-results" style={{listStyle: 'none'}}>
-              {posts.map((post: PostType) => (
-                  <li className="type-selection-result">
-                    <button className={values.includes(post.id) ? '--selected' : ''} onClick={() => {
-                      handleSelection(post)
-                    }}>{post.title?.rendered ?? `${post.first_name} ${post.last_name}`}
-                    </button>
-                  </li>
-                )
-              )}
-            </ul>
-            }
-            { (!posts || posts?.length === 0) &&
-            <div className="type-selection-no-result">No results found</div>
-            }
-          </div>
-          <div className="type-selection-selection-wrapper">
-          { selection.length > 0 && selection.map(post => (
-                <span className="type-selection-selection">{post.title?.rendered ?? `${post.first_name} ${post.last_name}`}</span>
-          ))}
+      <FieldWrapper label={label}>
+        <div className="TypesSelection">
+          <div className="type-selection-wrapper">
+            <div className="type-selection-search-wrapper">
+              <input
+                  type="text"
+                  autoComplete="off"
+                  className="type-selection-search-input"
+                  name="search"
+                  placeholder="Search..."
+                  onChange={(e) => setSearchKey(e.currentTarget.value)}
+              />
+              {posts?.length > 0 && <ul className="type-selection-results" style={{listStyle: 'none'}}>
+                {posts.map((post: PostType) => (
+                        <li className="type-selection-result">
+                          <button className={values.includes(post.id) ? '--selected' : ''} onClick={() => {
+                            handleSelection(post)
+                          }}>{post.title?.rendered ?? post.name}
+                          </button>
+                        </li>
+                    )
+                )}
+              </ul>
+              }
+              { (!posts || posts?.length === 0) &&
+              <div className="type-selection-no-result">No results found</div>
+              }
+            </div>
+            <div className="type-selection-selection-wrapper">
+              { selection.length > 0 && selection.map(post => (
+                  <span className="type-selection-selection">{post.title?.rendered ?? post.name}</span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </FieldWrapper>
+      </FieldWrapper>
   )
 }
 
