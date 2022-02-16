@@ -21,7 +21,7 @@ class Field
         $this->label = $label;
 
         if($type === 'lastTypes'){
-          $this->setPostsTypes();
+            $this->setPostsTypes();
         }
         return $this;
     }
@@ -32,10 +32,10 @@ class Field
     }
 
     private function setPostsTypes() {
-      $postTypes = get_post_types();
-      $this->setAttribute('postTypes',$postTypes);
+        $postTypes = get_post_types();
+        $this->setAttribute('postTypes',$postTypes);
 
-      return $this;
+        return $this;
     }
 
     public function setWidth(int $width = 100)
@@ -45,7 +45,7 @@ class Field
     }
 
     public function setPostType(string $type){
-      $this->setAttribute('postType', $type);
+        $this->setAttribute('postType', $type);
         return $this;
     }
 
@@ -67,8 +67,8 @@ class Field
 
     public function setAttribute($key, $value)
     {
-      $this->attributes[$key] = $value;
-      return $this;
+        $this->attributes[$key] = $value;
+        return $this;
     }
 
     public function getField()
@@ -88,19 +88,20 @@ class Field
     }
 
     public function setOptions(array $options){
-      $formattedOptions = [];
-      foreach ($options as $key => $value) {
-        array_push($formattedOptions, ['label' => $value, 'value' => $key]);
-      }
-      $this->setAttribute('options',$formattedOptions);
+        $formattedOptions = [];
+        foreach ($options as $key => $value) {
+            array_push($formattedOptions, ['label' => $value, 'value' => $key]);
+        }
+        $this->setAttribute('options',$formattedOptions);
 
-      return $this;
+        return $this;
     }
 
     private function getFieldType($type)
     {
         switch ($type) {
             case 'media':
+            case 'cta':
                 return 'object';
             case 'addable':
                 return 'array';

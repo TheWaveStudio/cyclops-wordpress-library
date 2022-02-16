@@ -1,26 +1,25 @@
 import React, {FC, useState} from "react";
 import {RichText} from "@wordpress/block-editor";
-import {GenericEditFieldProps} from "@/types/edit-fields";
+import {CtaFieldProps} from "@/types/edit-fields";
 import {FieldWrapper} from "./wrapper";
 
-export const CtaField: FC<GenericEditFieldProps> = props => {
+export const CtaField: FC<CtaFieldProps> = props => {
     const {value, placeholder, onChange, label = ""} = props
-    const buttonObject = !!value ? JSON.parse(value) : false;
-    const html = buttonObject && buttonObject?.href !== ''
-        ? `<a href="${buttonObject?.href}">${buttonObject?.text}</a>`
-        : buttonObject?.text;
+    const html = value && value?.href !== ''
+        ? `<a href="${value?.href}">${value?.text}</a>`
+        : (value?.text ?? '');
     return <FieldWrapper label={label}>
         <RichText value={html}
                   aria-label={'Button text'}
                   placeholder={ placeholder ||  'Add text…' }
                   inlineToolbar={true}
                   className="wp-block-button__link"
-                  onChange={(value) => {
-                      const $dom = (new DOMParser()).parseFromString(value, 'text/html');
+                  onChange={(inputValue) => {
+                      const $dom = (new DOMParser()).parseFromString(inputValue, 'text/html');
                       const $link = $dom.body.querySelector('a');
-                      const text = $link?.innerText ?? value;
+                      const text = $link?.innerText ?? inputValue;
                       const href = $link?.getAttribute('href') ?? '';
-                      onChange(JSON.stringify({href, text}))
+                      onChange({href, text})
                   }}/>
     </FieldWrapper>
 

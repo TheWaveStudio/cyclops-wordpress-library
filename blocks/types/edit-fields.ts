@@ -7,11 +7,21 @@ export type GenericEditFieldProps = {
   label?: string
 };
 
+export type ctaField = {
+  href: string,
+  text: string
+}
+
 export type EditFieldProps = GenericEditFieldProps;
 
 export type MediaFieldProps = GenericEditFieldProps & {
   onChange: (...args: any[]) => void
 };
+
+export type CtaFieldProps = GenericEditFieldProps & {
+  onChange: (content: ctaField) => void
+};
+
 
 export type AddableFieldProps = GenericEditFieldProps & {
   config: BlockFieldConfig,
