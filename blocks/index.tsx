@@ -18,7 +18,6 @@ const blockFactory = (config: BlockFactoryConfig) => {
   const attributes ={...fieldsAttributes, ...controlsAttributes}
 
   return registerBlockType(config.blockName, {
-    apiVersion: 2,
     title: config.name,
     // description: __('An example block', 'cy'),
     category: 'layout',
