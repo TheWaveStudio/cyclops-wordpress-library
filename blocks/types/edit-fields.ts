@@ -39,3 +39,8 @@ export type AddableFieldItemProps = {
 export type TimeEditFieldProps = GenericEditFieldProps & {
   onChange: (content: Date) => void
 };
+
+export type CheckboxFieldProps = GenericEditFieldProps & {
+  value: string,
+  onChange: (isChecked: boolean) => void
+};

@@ -10,11 +10,12 @@ import {
   AddableField,
   SelectField,
   TypesSelectionField,
-  LastTypesField
+  LastTypesField, CheckboxField
 } from "./fields";
 
-const FieldsDictionary: { [key: string]: any } = {
+const FieldsDictionary: Record<string, FC<any>> = {
   'text': TextField,
+  'checkbox': CheckboxField,
   'media': MediaField,
   'richText': RichTextField,
   'datePicker': DatePickerField,
@@ -30,31 +31,27 @@ export const BlockField: FC<{
   onChange: (...args: any[]) => void,
   value: any
 }> = props => {
-  
 
   const {config, value, onChange} = props;
   const DynamicField = useMemo(() => {
     return FieldsDictionary[config.field ?? 'text'] ?? FieldsDictionary.text;
   }, [config?.type])
-  
+
   return <div className="field-wrapper"
               style={{flex: "0 1 " + (config.width ?? 100) + '%'}}
   >
     {!config?.children?.length
-        ? <DynamicField label={config.label ?? config.name}
-                        onChange={onChange}
-                        value={value}
-                        placeholder={""}
-                        customAttributes={config.attributes ?? {}}
-        />
-        : <div>
-          <AddableField config={config}
-                        onChange={onChange}
-                        value={value}
-                        customAttributes={config.attributes ?? {}}
-          />
-          {/*{JSON.stringify(value)}*/}
-        </div>
+      ? <DynamicField label={config.label ?? config.name}
+                      onChange={onChange}
+                      value={value}
+                      placeholder={""}
+                      customAttributes={config.attributes ?? {}}
+      />
+      : <AddableField config={config}
+                      onChange={onChange}
+                      value={value}
+                      customAttributes={config.attributes ?? {}}
+      />
     }
   </div>
 }

@@ -20,9 +20,6 @@ export const BlockWrapper: FC<BlockWrapperProps> = props => {
     attributes
   } = props;
 
-  // useEffect(() => {
-  //   console.log({attributes})
-  // }, [attributes]);
   return (
       <div className="BlockWrapper">
         {!!blockName?.length && (<h3 className="title">{blockName}</h3>)}

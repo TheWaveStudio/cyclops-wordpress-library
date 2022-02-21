@@ -1,4 +1,5 @@
 export * from "./addable";
+export * from "./checkbox";
 export * from "./colors-palette";
 export * from "./cta";
 export * from "./date-picker";
