@@ -8,7 +8,7 @@ export const CheckboxField: FC<CheckboxFieldProps> = props => {
 
   return <FieldWrapper label={label}>
     <CheckboxControl checked={value}
-                     help={placeholder}
+                     label={label}
                      {...attrs}
     />
   </FieldWrapper>
