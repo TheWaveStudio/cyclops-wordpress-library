@@ -30,9 +30,6 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Functional\\": "src/Functional"
-                },
                 "files": [
                     "src/Functional/Ary.php",
                     "src/Functional/Average.php",
@@ -127,7 +124,10 @@
                     "src/Functional/With.php",
                     "src/Functional/Zip.php",
                     "src/Functional/ZipAll.php"
-                ]
+                ],
+                "psr-4": {
+                    "Functional\\": "src/Functional"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -169,5 +169,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }

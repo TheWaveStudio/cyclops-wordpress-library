@@ -15,5 +15,5 @@ export type BlockFactoryConfig = {
   fields: BlockFieldConfig[],
   parent: string[],
   innerBlocks: string[]
-  blocksControl: BlockFieldConfig[]
+  blocksControl: { title: string, fields: BlockFieldConfig[] }[]
 };

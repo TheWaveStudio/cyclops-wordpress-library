@@ -15,7 +15,6 @@ registerBlockType('cyclops/test', {
     return <div className={className}>{__('Hello from the editor!', 'cy')}</div>
   },
   save: (props) => {
-    console.log('save', {props})
     return <div>Hello!</div>;
   }
 })

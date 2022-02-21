@@ -12,10 +12,10 @@ const blockFactory = (config: BlockFactoryConfig) => {
   const fieldsAttributes = fields.reduce((acc, {type, name}) => {
     return {...acc, [name]: {type,}}
   }, {})
-  const controlsAttributes = blocksControl.reduce((acc, {type, name}) => {
-    return {...acc, [name]: {type,}}
+  const controlsAttributes = blocksControl.flatMap(control => control.fields).reduce((acc, {type, name}) => {
+    return {...acc, [name]: {type}} 
   }, {})
-  const attributes ={...fieldsAttributes, ...controlsAttributes}
+  const attributes = {...fieldsAttributes, ...controlsAttributes}
 
   return registerBlockType(config.blockName, {
     title: config.name,
@@ -26,54 +26,56 @@ const blockFactory = (config: BlockFactoryConfig) => {
     parent: config.parent ?? null,
     attributes,
     edit: (props) => {
-      const [color,setColor] = useState( 'transparent')
+      const [color, setColor] = useState('transparent')
       const blockProps = useBlockProps({
         className: config.blockName
       })
 
-      useEffect(()=>{
+      useEffect(() => {
         for (const [key, value] of Object.entries(props.attributes)) {
-          if(key === 'backgroundColor'){
+          if (key === 'backgroundColor') {
             setColor(value as string)
             break;
           }
         }
-      },[])
+      }, [])
 
-      const changedBackgroundColor = (color: string) =>{
+      const changedBackgroundColor = (color: string) => {
         setColor(color);
       }
 
+
       return (
-          <div {...blockProps}>
-            <BlockWrapper
-                blockName={name}
-                config={config}
-                backgroundColor={color}
-                {...props}
-            />
-            <InspectorControls>
-              { config.blocksControl.map(field => (
-                  <PanelWrapper  field={field}
-                                 onChangeColor={changedBackgroundColor}
-                                 {...props} />
-              ))
-              }
-            </InspectorControls>
-            {config.innerBlocks?.length &&
-            <div className="inner-blocks">
-              Add fields <InnerBlocks allowedBlocks={config.innerBlocks} />
-            </div>
+        <div {...blockProps}>
+          <BlockWrapper
+            blockName={name}
+            config={config}
+            backgroundColor={color}
+            {...props}
+          />
+          <InspectorControls>
+            {config.blocksControl.map(({title,fields}) => (
+              <PanelWrapper fields={fields}
+                            label={title}
+                            onChangeColor={changedBackgroundColor}
+                            {...props} />
+            ))
             }
-          </div>
+          </InspectorControls>
+          {config.innerBlocks?.length &&
+            <div className="inner-blocks">
+              Add fields <InnerBlocks allowedBlocks={config.innerBlocks}/>
+            </div>
+          }
+        </div>
       )
     },
     save: (props) => {
       return (
-          <>
-            {props}
-            {config.innerBlocks?.length &&  <InnerBlocks.Content />}
-          </>
+        <>
+          {props}
+          {config.innerBlocks?.length && <InnerBlocks.Content/>}
+        </>
       )
     }
   })
@@ -81,7 +83,6 @@ const blockFactory = (config: BlockFactoryConfig) => {
 
 window?.CY?.blocks?.forEach?.(config => {
   const block = blockFactory(config);
-  console.log({block});
 })
 
 
