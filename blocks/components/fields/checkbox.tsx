@@ -6,7 +6,7 @@ import {FieldWrapper} from "./wrapper";
 export const CheckboxField: FC<CheckboxFieldProps> = props => {
   const {value, placeholder, label = '', ...attrs} = props;
 
-  return <FieldWrapper label={label}>
+  return <FieldWrapper label=''>
     <CheckboxControl checked={value}
                      label={label}
                      {...attrs}
