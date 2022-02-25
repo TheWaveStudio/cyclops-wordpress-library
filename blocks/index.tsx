@@ -13,7 +13,11 @@ const blockFactory = (config: BlockFactoryConfig) => {
     return {...acc, [name]: {type,}}
   }, {})
   const controlsAttributes = blocksControl.flatMap(control => control.fields).reduce((acc, {type, name}) => {
+<<<<<<< HEAD
     return {...acc, [name]: {type}} 
+=======
+    return {...acc, [name]: {type}}
+>>>>>>> 7a709438eb4072f0e8112ad503917806486fdb9f
   }, {})
   const attributes = {...fieldsAttributes, ...controlsAttributes}
 
@@ -26,7 +30,12 @@ const blockFactory = (config: BlockFactoryConfig) => {
     parent: config.parent ?? null,
     attributes,
     edit: (props) => {
+<<<<<<< HEAD
       const [color, setColor] = useState('transparent')
+=======
+      const hasControlColors = config.blocksControl.some(({fields}) => fields.some(field => field.field === 'colors'));
+      const [color, setColor] = useState(hasControlColors ? 'transparent' : '')
+>>>>>>> 7a709438eb4072f0e8112ad503917806486fdb9f
       const blockProps = useBlockProps({
         className: config.blockName
       })
@@ -63,9 +72,15 @@ const blockFactory = (config: BlockFactoryConfig) => {
             }
           </InspectorControls>
           {config.innerBlocks?.length &&
+<<<<<<< HEAD
             <div className="inner-blocks">
               Add fields <InnerBlocks allowedBlocks={config.innerBlocks}/>
             </div>
+=======
+          <div className="inner-blocks">
+            Add fields <InnerBlocks allowedBlocks={config.innerBlocks}/>
+          </div>
+>>>>>>> 7a709438eb4072f0e8112ad503917806486fdb9f
           }
         </div>
       )

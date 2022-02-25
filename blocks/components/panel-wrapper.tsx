@@ -25,6 +25,7 @@ export const PanelWrapper: FC<BlockWrapperProps> = props => {
   return (
     <Panel>
       <PanelBody title={label} initialOpen={true}>
+<<<<<<< HEAD
           {fields.map(field => (
             <PanelRow>
               <BlockField
@@ -39,6 +40,22 @@ export const PanelWrapper: FC<BlockWrapperProps> = props => {
               />
             </PanelRow>
           ))}
+=======
+        {fields.map(field => (
+          <PanelRow>
+            <BlockField
+              config={{...field}}
+              onChange={(content) => {
+                if (field.field === 'colors') {
+                  onChangeColor(content)
+                }
+                setAttributes({...attributes, [field.name]: content})
+              }}
+              value={attributes[field.name] ?? ""}
+            />
+          </PanelRow>
+        ))}
+>>>>>>> 7a709438eb4072f0e8112ad503917806486fdb9f
       </PanelBody>
     </Panel>
   )
