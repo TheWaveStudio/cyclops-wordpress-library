@@ -1,5 +1,45 @@
-.cyclops-addable-item{
-  display: flex;
-  flex-flow: row wrap;
-  margin-top: 0.5rem;
+.CyclopsAddable{
+  .cyclops-addable-item{
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 0.5rem;
+  }
+  .addable-count{
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: right;
+  }
+  .item-title{
+    color: $main-color;
+    display: block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 100%;
+    &:after{
+      background-color: $main-color;
+      content: "";
+      display: block;
+      height: 1px;
+      padding-bottom: 0.2rem;
+      width: 100%;
+    }
+  }
+  .remove-wrapper{
+    display: block;
+    text-align: right;
+    width: 100%;
+  }
+  .addable-account{
+    font-size: 0.8rem;
+  }
+  
+  .cyclops-button{
+    background: $main-color;
+    border: 1px solid $main-color;
+  }
+  
+  .remove-button{
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+  }
 }

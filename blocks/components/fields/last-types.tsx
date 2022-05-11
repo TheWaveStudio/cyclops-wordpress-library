@@ -35,17 +35,18 @@ export const LastTypesField:  FC<GenericEditFieldProps> = props => {
     onChange(JSON.stringify(posts.map(post => post.id)));
   }, [posts])
 
-  return(
-    <FieldWrapper label={label}>
-      {posts?.length > 0 && <ul>
-        { posts.map((post: PostType) => (
-            <li>{post.title?.rendered}</li>
+  return(<div className="CyclopsLastTypes">
+      <FieldWrapper label={label}>
+        {posts?.length > 0 && <ul className="list-wrapper">
+          { posts.map((post: PostType) => (
+              <li className="list-item">{post.title?.rendered}</li>
+            )
           )
-        )
+          }
+        </ul>
         }
-      </ul>
-      }
-    </FieldWrapper>
+      </FieldWrapper>
+  </div>
   )
 }
 

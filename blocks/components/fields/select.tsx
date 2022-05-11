@@ -6,15 +6,16 @@ import {FieldWrapper} from "./wrapper";
 export const SelectField: FC<GenericEditFieldProps> = props => {
     const {value, customAttributes, onChange, label = ""} = props
   
-    return <FieldWrapper label={label}>
-        <br/>
-        <SelectControl
-          label={customAttributes?.placeholder ?? 'Select an option...'}
-          value={value}
-          options={customAttributes?.options ?? []}
-          multiple={customAttributes?.multiple ?? false}
-          onChange={onChange} />
-    </FieldWrapper>
+    return <div className="CyclopsSelect">
+      <FieldWrapper label={label}>
+          <SelectControl
+            label={customAttributes?.placeholder ?? ''}
+            value={value}
+            options={customAttributes?.options ?? []}
+            multiple={customAttributes?.multiple ?? false}
+            onChange={onChange} />
+      </FieldWrapper>
+    </div>
 }
 
 export default SelectField;

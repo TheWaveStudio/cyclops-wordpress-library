@@ -6,12 +6,14 @@ import {FieldWrapper} from "./wrapper";
 export const TextField: FC<GenericEditFieldProps> = props => {
   const {label = "", onChange, value, placeholder} = props;
 
-  return <FieldWrapper label={label}>
-    <PlainText onChange={onChange}
-               value={value}
-               placeholder={placeholder}
-    />
-  </FieldWrapper>
+  return <div className="CyclopsText">
+    <FieldWrapper label={label}>
+      <PlainText onChange={onChange}
+                 value={value}
+                 placeholder={placeholder}
+      />
+    </FieldWrapper>
+  </div>
 }
 
 export default TextField;

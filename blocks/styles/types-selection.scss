@@ -1,63 +1,71 @@
-.TypesSelection{
-  .type-selection{
-    &-wrapper{
-      display: flex;
-      flex-direction: row;
-    }
-    
-    &-selection-wrapper,
-    &-search-wrapper{
-      flex: 50%;
-    }
-    &-search-wrapper{
-      margin-right: 1rem;
-    }
-    &-selection-wrapper{
-      margin-left: 1rem;
-    }
+.CyclopsTypesSelection{
+  counter-reset: selected-teacher-counter;
+  .TypesSelection{
+    .type-selection{
+      &-wrapper{
+        display: flex;
+        flex-direction: row;
+      }
 
-    &-search-input{
-      margin-bottom: 1rem;
-      width: 100%;
-    }
-    
-    &-results{
-      box-sizing: border-box;
-      height: 100%;
-      margin: 0;
-      max-height: 10rem;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 0;
-      width: 100%;
-    }
-    
-    &-result{
-      max-width: 100%;
-      button{
-        background-color: #fff;
-        border: 1px solid #7f7f7f;
-        border-radius: 0.15rem;
-        box-shadow: none;
-        cursor: pointer;
-        display: block;
-        margin-bottom: 0.3rem;
-        padding: 0.3rem;
-        text-align: left;
+      &-selection-wrapper,
+      &-search-wrapper{
+        flex: 50%;
+      }
+      &-search-wrapper{
+        margin-right: 1rem;
+      }
+      &-selection-wrapper{
+        margin-left: 1rem;
+      }
+
+      &-search-input{
+        margin-bottom: 1rem;
         width: 100%;
-        
-        &.\--selected{
-          background-color: rgba(0,0,0,0.5);
-          color: #fff;
+      }
+
+      &-results{
+        box-sizing: border-box;
+        height: 100%;
+        margin: 0;
+        max-height: 10rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0;
+        width: 100%;
+      }
+      
+      &-selection-wrapper{
+        max-height: 12.5rem;
+        overflow-y: auto;
+      }
+
+      &-result{
+        max-width: 100%;
+        button{
+          background-color: $white;
+          border: 1px solid $black;
+          border-radius: 0.15rem;
+          box-shadow: none;
+          cursor: pointer;
+          display: block;
+          margin-bottom: 0.3rem;
+          padding: 0.3rem;
+          text-align: left;
+          width: 100%;
+
+          &.\--selected{
+            background-color: $main-color;
+            color: $white;
+          }
         }
       }
-    }
-    &-selection{
-      & + .type-selection-selection{
+      
+      &-selection{
+        display: block;
+        margin: 0 0.2rem;
         &:before{
-          content: ' - ';
-          display: inline-block;
-          margin: 0 0.2rem;
+          counter-increment: selected-teacher-counter;
+          content: counter(selected-teacher-counter) ". ";
         }
       }
     }

@@ -26,20 +26,20 @@ export const AddableField: FC<AddableFieldProps> = (props) => {
   const addItem = () => onChange([...value, ""])
   const removeItem = (index: number) => onChange(value.filter((_: any, i: number) => i !== index))
 
-  console.log({componentProps})
-
-  return <div>
-    <div>Count: {count}</div>
+  return <div className="CyclopsAddable">
+    { count > 0 && <div className="addable-count">Totale elementi aggiunti: {count}</div> }
     {Array.from({length: count}, (_) => fields)
-        .map((fields, index) => <div className={"cyclops-addable-item"}>
+        .map((fields, index) => <div className={"cyclops-addable-item"}><span className="item-title">Elemento {index+1}</span>
           {fields.map((config) => <AddableFieldItem config={config}
                                                     onChange={value => updateChild(config.name, value, index)}
                                                     value={value[index]?.[config.name] ?? ''}
                                                     index={index}
           />)}
-          <button className="cyclops-button" onClick={e => removeItem(index)}>Remove #{index}</button>
+          <div className="remove-wrapper">
+            <button className="remove-button cyclops-button" onClick={e => removeItem(index)}>Elimina #{index + 1}</button>
+          </div>
         </div>)}
-    <button  className="cyclops-button" onClick={e => addItem()}>Aggiungi nuovo</button>
+    <button  className="add-button cyclops-button" onClick={e => addItem()}>Aggiungi nuovo</button>
   </div>
 }
 

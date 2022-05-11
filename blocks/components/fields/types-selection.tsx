@@ -56,7 +56,7 @@ export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
         onChange(JSON.stringify(selection.map(post => post.id)));
     },[selection])
 
-    return(
+    return(<div className="CyclopsTypesSelection">
         <FieldWrapper label={label}>
             <div className="TypesSelection">
                 <div className="type-selection-wrapper">
@@ -93,6 +93,7 @@ export const TypesSelectionField:  FC<GenericEditFieldProps> = props => {
                 </div>
             </div>
         </FieldWrapper>
+      </div>
     )
 }
 

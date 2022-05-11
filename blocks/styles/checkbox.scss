@@ -1,12 +1,19 @@
-.components-checkbox-control{
-  .components-base-control__field{
-    align-items: center;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: nowrap;
-    
-    .components-checkbox-control__label{
-      margin-bottom: 0;
+.CyclopsCheckbox{
+  .components-checkbox-control{
+    .components-base-control__field{
+      align-items: center;
+      display: flex;
+      flex-flow: row;
+      flex-wrap: nowrap;
+
+      .components-checkbox-control__label{
+        margin-bottom: 0;
+      }
     }
+  }
+  .components-checkbox-control__input[type=checkbox]:checked{
+    background: $main-color;
+    border-color: $main-color;
+    border-radius: $border-radius;
   }
 }

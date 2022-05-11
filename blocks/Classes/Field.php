@@ -105,6 +105,8 @@ class Field
                 return 'object';
             case 'addable':
                 return 'array';
+            case 'checkbox':
+              return 'boolean';
             default:
                 return "string";
         }
