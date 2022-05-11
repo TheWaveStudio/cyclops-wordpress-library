@@ -1,6 +1,7 @@
 html{
   font-size: 20px;
 }
+
 .BlockWrapper{
   position: relative;
   .title{
@@ -24,12 +25,33 @@ html{
   }
 }
 
+.block-list-appender.block-list-appender{
+  padding: 0.5rem 0;
+  position: relative;
+  
+  .block-list-appender__toggle{
+    background: $main-color;
+    height: 1.6rem;
+    margin: 0 auto;
+    width: 1.6rem;
+  }
+}
+
+.inner-blocks{
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.block-editor-inner-blocks{
+  text-align: left;
+}
+
 .field-wrapper{
-  padding:0.2rem;
+  padding:0.2rem 0;
   label{
     display: block;
     font-size: 0.8rem;
-    margin-bottom: 0.3rem;
+    font-weight: bold;
   }
   input,
   select,
@@ -61,7 +83,7 @@ html{
   }
 
   .components-placeholder__label{
-    font-size: 0.8rem;;
+    font-size: 0.8rem;
   }
 
   .cyclops-button{

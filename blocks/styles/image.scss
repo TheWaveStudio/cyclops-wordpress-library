@@ -1,0 +1,63 @@
+.CyclopsImage{
+  .components-placeholder__fieldset{
+    flex-direction: row!important;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .components-form-file-upload{
+    button {
+      background: $main-color;
+      border-radius: $border-radius;
+      margin-bottom: 0!important;
+      margin-right: 0.5rem!important;
+    }
+  }
+
+  .components-button.is-tertiary{
+    border: 1px solid $main-color;
+    border-color: $main-color;
+    border-radius: $border-radius;
+    margin: 0!important;
+  }
+  
+  .wf-media-preview{
+    margin-bottom: 0;
+    max-width: 10rem;
+    max-height: 10rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .remove-button{
+    background: transparent;
+    border:0;
+    color: $black;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 1rem;
+    position:absolute;
+    top: -0.5rem;
+    right:-0.5rem;
+    
+    &:before,
+    &:after{
+      background: $black;
+      display: block;
+      content:"";
+      height: 2px;
+      width: 1rem;
+    }
+    
+    &:before{
+      margin-top: 6px;
+      transform: rotate(45deg);
+    }
+    
+    &:after{
+      margin-top: -2px;
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -8,7 +8,7 @@ export const MediaField: FC<MediaFieldProps> = props => {
   const {value: {id: currentSelectedId}} = props;
   const isMediaSelected = useMemo(() => !!currentSelectedId, [currentSelectedId]);
 
-  return <div>
+  return <div className="CyclopsImage">
     {!isMediaSelected &&
       <MediaPlaceholder onSelect={onChange}
                         allowedTypes={['image']}
@@ -20,11 +20,9 @@ export const MediaField: FC<MediaFieldProps> = props => {
       <div>
         <div className="wf-media-preview">
           <img src={props.value.url} alt={props.value.alt}/>
-        </div>
-        <div>
-          <button type="button"
+          <button className="remove-button" type="button"
                   onClick={e => props.onChange({})}
-          >Rimuovi Immagine
+          >
           </button>
         </div>
       </div>}

@@ -4,14 +4,17 @@ import {CheckboxFieldProps} from "@/types/edit-fields";
 import {FieldWrapper} from "./wrapper";
 
 export const CheckboxField: FC<CheckboxFieldProps> = props => {
-  const {value, placeholder, label = '', ...attrs} = props;
+  const {value, placeholder, onChange, label = '', ...attrs} = props;
 
-  return <FieldWrapper label=''>
-    <CheckboxControl checked={value}
-                     label={label}
-                     {...attrs}
-    />
-  </FieldWrapper>
+  return <div className="CyclopsCheckbox">
+    <FieldWrapper label=''>
+      <CheckboxControl checked={value}
+                       label={label}
+                       onChange={onChange}
+                       {...attrs}
+      />
+    </FieldWrapper>
+  </div>
 }
 
 export default CheckboxField;

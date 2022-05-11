@@ -8,7 +8,8 @@ export const CtaField: FC<CtaFieldProps> = props => {
     const html = value && value?.href !== ''
         ? `<a href="${value?.href}">${value?.text}</a>`
         : (value?.text ?? '');
-    return <FieldWrapper label={label}>
+    return <div className="CyclopsCta">
+      <FieldWrapper label={label}>
         <RichText value={html}
                   aria-label={'Button text'}
                   placeholder={ placeholder ||  'Add text…' }
@@ -21,7 +22,8 @@ export const CtaField: FC<CtaFieldProps> = props => {
                       const href = $link?.getAttribute('href') ?? '';
                       onChange({href, text})
                   }}/>
-    </FieldWrapper>
+      </FieldWrapper>
+    </div>
 
 }
 
