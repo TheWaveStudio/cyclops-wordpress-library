@@ -1,0 +1,16 @@
+.CyclopsMultiSelect{
+  .components-form-token-field {
+    &__token{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    &__token,
+    &__token-text,
+    &__remove-token{
+      background-color: $main-color;
+      color: $white;
+    }
+  }
+}

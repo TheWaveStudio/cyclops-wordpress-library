@@ -10,8 +10,11 @@ import {
   AddableField,
   SelectField,
   TypesSelectionField,
-  LastTypesField, CheckboxField
+  LastTypesField,
+  CheckboxField,
+  MultiSelectField
 } from "./fields";
+
 
 const FieldsDictionary: Record<string, FC<any>> = {
   'text': TextField,
@@ -23,7 +26,8 @@ const FieldsDictionary: Record<string, FC<any>> = {
   'colors': ColorsPaletteField,
   'select': SelectField,
   'itemsSelection': TypesSelectionField,
-  'lastTypes': LastTypesField
+  'lastTypes': LastTypesField,
+  'multiSelect': MultiSelectField,
 }
 
 export const BlockField: FC<{

@@ -5,6 +5,7 @@ export * from "./cta";
 export * from "./date-picker";
 export * from "./last-types";
 export * from "./media";
+export * from "./multiselect";
 export * from "./select";
 export * from "./text";
 export * from "./types-selection";
