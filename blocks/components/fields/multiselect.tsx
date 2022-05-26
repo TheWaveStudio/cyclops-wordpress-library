@@ -66,7 +66,8 @@ export const MultiSelectField:  FC<GenericEditFieldProps> = props => {
           value={ selectionString }
           suggestions={ formatted }
           onChange={ ( tokens ) => handleSelection(tokens) }
-          __experimentalValidateInput ={(token: any)=>{
+          // @ts-ignore
+          __experimentalValidateInput = {(token: any)=>{
             return !!findItem(token);
           }}
         />
